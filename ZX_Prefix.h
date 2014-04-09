@@ -10,4 +10,4 @@
 #import "ZX_Define.h"
 #import "MKBlockAdditions.h"
 #import "FrameAccessor.h"
-#import "UIView+TapGesture.h"
+#import "CommonUtilities.h"
