@@ -1,9 +1,9 @@
 //
 //  UIImage+resizeImage.m
-//  lenovoRelonline
+//  
 //
-//  Created by noteant-6 on 2/16/14.
-//  Copyright (c) 2014 noteant-6. All rights reserved.
+//  Created by zx on 2/16/14.
+//  Copyright (c) 2014 zx. All rights reserved.
 //
 
 #import "UIImage+resizeImage.h"

@@ -1,9 +1,9 @@
 //
 //  CommonUtilities.h
-//  lenovoRelonline
+//  
 //
-//  Created by noteant-6 on 3/13/14.
-//  Copyright (c) 2014 noteant-6. All rights reserved.
+//  Created by zx on 3/13/14.
+//  Copyright (c) 2014 zx. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,4 +18,8 @@
 
 //应用内打开 app store 页面
 - (void)openAppWithId:(NSString *)appId;
++ (NSDate *)ymdDateFromDate:(NSDate *)date;
+@end
+@interface NSUserDefaults (CommonUtilities)
+- (void)zx_setObject:(id)obj forKey:(NSString *)key;
 @end

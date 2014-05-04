@@ -18,7 +18,7 @@
  */
 
 
-#define ZXLocalized(string) [TSLanguageManager localizedString:string]
+
 
 #define NSLog(FORMAT, ...) fprintf(stderr, "%s:%d----->  \t%s\n", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ## __VA_ARGS__] UTF8String]);
 
@@ -96,6 +96,8 @@
 // System Information
 
 #define App_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
+#define App_Version_short [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 #define CurrentSystemVersion ([[UIDevice currentDevice] systemVersion])
 #define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
@@ -103,4 +105,5 @@
 
 #define IOS_7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
-
+// UI
+#define FLEXIBLE_BAR_ITEM [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]

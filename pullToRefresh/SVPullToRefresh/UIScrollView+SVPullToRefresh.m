@@ -84,7 +84,10 @@ static char UIScrollViewPullToRefreshView;
         view.scrollView = self;
         [self addSubview:view];
         
-        view.originalTopInset = self.contentInset.top;
+//        view.originalTopInset = self.contentInset.top ; // origin
+
+        view.originalTopInset = self.contentInset.top + 64;// zhengxin
+
         view.originalBottomInset = self.contentInset.bottom;
         view.position = position;
         self.pullToRefreshView = view;
@@ -92,6 +95,8 @@ static char UIScrollViewPullToRefreshView;
     }
     
 }
+
+
 
 - (void)addPullToRefreshWithActionHandler:(void (^)(void))actionHandler {
     [self addPullToRefreshWithActionHandler:actionHandler position:SVPullToRefreshPositionTop];
@@ -180,9 +185,9 @@ static char UIScrollViewPullToRefreshView;
         self.state = SVPullToRefreshStateStopped;
         self.showsDateLabel = NO;
         
-        self.titles = [NSMutableArray arrayWithObjects:@"下拉刷新",
-                             @"松开手指刷新",
-                             @"获取中...",
+        self.titles = [NSMutableArray arrayWithObjects:@"Pull to refresh...",
+                             @"Release to refresh",
+                             @"Loading...",
                                 nil];
         
         self.subtitles = [NSMutableArray arrayWithObjects:@"", @"", @"", @"", nil];
@@ -347,7 +352,9 @@ static char UIScrollViewPullToRefreshView;
     UIEdgeInsets currentInsets = self.scrollView.contentInset;
     switch (self.position) {
         case SVPullToRefreshPositionTop:
-            currentInsets.top = MIN(offset, self.originalTopInset + self.bounds.size.height);
+            currentInsets.top = MIN(offset, self.originalTopInset + self.bounds.size.height);//origin
+//            currentInsets.top =  500;//zhengxin
+            //TODO: to fix
             break;
         case SVPullToRefreshPositionBottom:
             currentInsets.bottom = MIN(offset, self.originalBottomInset + self.bounds.size.height);
@@ -389,7 +396,11 @@ static char UIScrollViewPullToRefreshView;
         [self layoutSubviews];
 
 }
-
+//// zhengxin
+//- (CGFloat)originalTopInset {
+//   return self.scrollView.contentInset.top;
+//}
+//
 - (void)scrollViewDidScroll:(CGPoint)contentOffset {
     if(self.state != SVPullToRefreshStateLoading) {
         CGFloat scrollOffsetThreshold = 0;
@@ -473,7 +484,7 @@ static char UIScrollViewPullToRefreshView;
 - (UILabel *)subtitleLabel {
     if(!_subtitleLabel) {
         _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 210, 20)];
-        _subtitleLabel.font = [UIFont systemFontOfSize:12];
+        _subtitleLabel.font = APP_FONT(12);
         _subtitleLabel.backgroundColor = [UIColor clearColor];
         _subtitleLabel.textColor = textColor;
         [self addSubview:_subtitleLabel];
@@ -620,7 +631,7 @@ static char UIScrollViewPullToRefreshView;
     switch (self.position) {
         case SVPullToRefreshPositionTop:
             if(!self.wasTriggeredByUser)
-                [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, -self.originalTopInset) animated:YES];
+                [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, - self.originalTopInset) animated:YES];
             break;
         case SVPullToRefreshPositionBottom:
             if(!self.wasTriggeredByUser)

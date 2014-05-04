@@ -1,9 +1,9 @@
 //
 //  CommonUtilities.m
-//  lenovoRelonline
+//  
 //
-//  Created by noteant-6 on 3/13/14.
-//  Copyright (c) 2014 noteant-6. All rights reserved.
+//  Created by zx on 3/13/14.
+//  Copyright (c) 2014 zx. All rights reserved.
 //
 
 #import "CommonUtilities.h"
@@ -119,4 +119,25 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_idStr]];
     }
 }
+
++ (NSDate *)ymdDateFromDate:(NSDate *)date {
+    NSCalendar *calendar   = NSCalendar.currentCalendar;
+    NSDateComponents *components = [calendar components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit
+                                               fromDate:date];
+    NSDate *result = [calendar dateFromComponents:components];
+    return result;
+}
+
 @end
+
+@implementation  NSUserDefaults (CommonUtilities)
+
+- (void)zx_setObject:(id)obj forKey:(NSString *)key {
+    [self setObject:obj forKey:key];
+    [self synchronize];
+}
+
+
+@end
+
+
