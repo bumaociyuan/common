@@ -96,6 +96,28 @@
     return result;
 }
 
++(NSArray *)checkMapApps {
+    NSArray *mapSchemeArr = @[@"comgooglemaps://",@"iosamap://navi",@"baidumap://map/"];
+    
+    NSMutableArray *appListArr = [[NSMutableArray alloc] initWithObjects:ZXLocalized(@"iOSMap"), nil];
+    
+    for (int i = 0; i < [mapSchemeArr count]; i++) {
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[mapSchemeArr objectAtIndex:i]]]]) {
+            if (i == 0) {
+                [appListArr addObject:ZXLocalized(@"googleMap")];
+            }else if (i == 1){
+                [appListArr addObject:ZXLocalized(@"autoNaviMap")];
+            }else if (i == 2){
+                //不检测 百度
+            }
+        }
+    }
+    
+    
+    return appListArr;
+}
+
+
 - (void)openAppWithId:(NSString *)_appId {
     Class storeVC = NSClassFromString(@"SKStoreProductViewController");
     if (storeVC != nil) {

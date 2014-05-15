@@ -10,4 +10,5 @@
 
 @interface NSIndexPath (UITableViewAddition)
 + (NSMutableArray *)indexPathsFromZeroToSomeRowWithRowsCount:(int)rowCount;//return an array of NSIndexPath count of maxRow + 1 ,section is 0
+
 @end

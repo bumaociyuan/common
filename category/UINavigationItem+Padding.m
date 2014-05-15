@@ -1,6 +1,6 @@
 //
 //  UINavigationItem+Padding.m
-//  
+//
 //
 //  Created by zx on 1/2/14.
 //  Copyright (c) 2014 zx. All rights reserved.
@@ -18,7 +18,7 @@
 - (UIBarButtonItem *)spacerWidth:(float)width
 {
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    space.width = -11;
+    //    space.width = -11;
     space.width = width;
     return space;
 }
@@ -57,7 +57,10 @@
         [self mk_setRightBarButtonItem:nil];
         if (rightBarButtonItem.customView) {
             [self mk_setRightBarButtonItems:@[[self spacerWidth:-11],rightBarButtonItem]];
-        }else {
+        }else if (rightBarButtonItem.width == 44){
+            [self mk_setRightBarButtonItems:@[[self spacerWidth:-11],rightBarButtonItem]];
+
+        }else{
             [self mk_setRightBarButtonItem:rightBarButtonItem];
         }
     } else {
