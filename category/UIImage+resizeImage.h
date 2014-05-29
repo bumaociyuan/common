@@ -10,4 +10,5 @@
 
 @interface UIImage (resizeImage)
 - (UIImage *)resizeToSize:(CGSize)newSize;
-@end
+- (UIImage *)resizeToScale:(CGFloat)newScale;
+- (UIImage *)imageBlackAndWhite;@end

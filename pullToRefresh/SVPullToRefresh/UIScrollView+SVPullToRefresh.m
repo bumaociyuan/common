@@ -87,7 +87,8 @@ static char UIScrollViewPullToRefreshView;
 //        view.originalTopInset = self.contentInset.top ; // origin
 
         view.originalTopInset = self.contentInset.top + 64;// zhengxin
-
+//        view.originalTopInset = self.contentInset.top + self.pullToRefreshView.insetOffset;
+        
         view.originalBottomInset = self.contentInset.bottom;
         view.position = position;
         self.pullToRefreshView = view;

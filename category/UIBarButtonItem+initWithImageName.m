@@ -13,18 +13,24 @@
     return [self barbuttonItemWithImage:image title:nil target:target action:action];
 }
 + (instancetype)barbuttonItemWithImage:(UIImage *)image title:(NSString *)title target:(id)target action:(SEL)action{
-    UIBarButtonItem * result = nil;
-//    result = [[UIBarButtonItem alloc]initWithImage:image landscapeImagePhone:nil style:UIBarButtonItemStylePlain target:target action:action];
+    return [self barbuttonItemWithImage:image disableImage:nil title:title target:target action:action];
+}
 
++ (instancetype)barbuttonItemWithImage:(UIImage *)image disableImage:(UIImage *)disableImage title:(NSString *)title target:(id)target action:(SEL)action {
+    UIBarButtonItem * result = nil;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame= CGRectMake(0.0, 0.0, image.size.width, image.size.height);
     button.titleLabel.font = [UIFont boldSystemFontOfSize:12];
     button.titleLabel.shadowOffset = CGSizeMake(0, -1);
     button.titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
-
+    
     
     [button setTitle:title forState:UIControlStateNormal];
     [button setBackgroundImage:image forState:UIControlStateNormal];
+    if (disableImage) {
+        [button setBackgroundImage:disableImage forState:UIControlStateDisabled];
+    }
+    
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     
     UIView *view =[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, image.size.width, image.size.height) ];
@@ -35,12 +41,4 @@
 }
 
 
-
-//-(void)setEnabled:(BOOL)enabled {
-//    if (self.customView) {
-//        if ([[self.customView.subviews objectAtIndex:0] isKindOfClass:[UIButton class]]) {
-//            ((UIButton*)[self.customView.subviews objectAtIndex:0]).enabled = enabled;
-//        }
-//    }
-//}
 @end

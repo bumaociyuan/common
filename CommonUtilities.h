@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <Social/Social.h>
 @interface CommonUtilities : NSObject
 + (UIViewController *)topViewController;
 + (NSArray *)imageUrlsInHtmlString:(NSString *)htmlString;
@@ -22,6 +22,7 @@
 //@"baidumap://map/"
 +(NSArray *)checkMapApps;
 
++ (SLComposeViewController *)composeViewControllerWithServiceType:(NSString *)serviceType initialText:(NSString *)initialText image:(UIImage *)image urlString:(NSString *)urlString;
 
 //应用内打开 app store 页面
 - (void)openAppWithId:(NSString *)appId;

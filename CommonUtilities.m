@@ -117,6 +117,39 @@
     return appListArr;
 }
 
++ (SLComposeViewController *)composeViewControllerWithServiceType:(NSString *)serviceType initialText:(NSString *)initialText image:(UIImage *)image urlString:(NSString *)urlString {
+    SLComposeViewController *result = nil;
+    if ([SLComposeViewController isAvailableForServiceType:serviceType]) {
+        NSLog(@"Available");
+        
+        SLComposeViewController *socialVC = [SLComposeViewController composeViewControllerForServiceType:serviceType];
+        
+//        // 写一个bolck，用于completionHandler的初始化
+//        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result) {
+//            if (result == SLComposeViewControllerResultCancelled) {
+//                NSLog(@"cancelled");
+//            } else
+//            {
+//                NSLog(@"done");
+//            }
+//            [socialVC dismissViewControllerAnimated:YES completion:Nil];
+//        };
+//        // 初始化completionHandler，当post结束之后（无论是done还是cancell）该blog都会被调用
+//        socialVC.completionHandler = myBlock;
+        
+        // 给view controller初始化默认的图片，url，文字信息
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        [socialVC setInitialText:initialText];
+        [socialVC addImage:image];
+        [socialVC addURL:url];
+        
+        result = socialVC;
+    } else {
+        NSLog(@"UnAvailable");
+    }
+    return result;
+}
 
 - (void)openAppWithId:(NSString *)_appId {
     Class storeVC = NSClassFromString(@"SKStoreProductViewController");
