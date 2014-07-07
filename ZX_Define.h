@@ -111,3 +111,22 @@
 
 // UI
 #define FLEXIBLE_BAR_ITEM [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]
+
+// category property
+#define ZX_CATEGORY_PROPERTY(propertyKey,property,setProperty,propertyClass,objc_AssociationPolicy,lazyInit) \
+static char propertyKey;\
+- (void)setProperty:(propertyClass *)property\
+{\
+objc_setAssociatedObject(self, &propertyKey, property, objc_AssociationPolicy);\
+}\
+- (propertyClass *)property\
+{\
+propertyClass *property = (propertyClass *)objc_getAssociatedObject(self, &propertyKey);\
+if (!property) {\
+lazyInit ;\
+if (property) self.property = property;\
+}\
+return property;\
+}\
+
+

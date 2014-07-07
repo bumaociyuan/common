@@ -8,6 +8,7 @@
 
 
 #import "ZX_Define.h"
+#import <objc/runtime.h>
 #import "MKBlockAdditions.h"
 #import "FrameAccessor.h"
 #import "CommonUtilities.h"
