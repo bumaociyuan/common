@@ -11,16 +11,20 @@
 @interface CommonUtilities : NSObject
 + (UIViewController *)topViewController;
 + (NSArray *)imageUrlsInHtmlString:(NSString *)htmlString;
-+ (NSString *)stringFromHtmlString:(NSString *)htmlString;
++ (NSString *)stringFromHtmlString:(NSString *)htmlString;//hhahh
+
++ (NSString *)stringByStrippingHTMLString:(NSString *)htmlString;//hahah
 
 //比较版本号 1.5.1>1.2.2
 + (BOOL)versionString1:(NSString *)versionString1 isGreaterThanVersionString2:(NSString *)versionString2;
+
++ (void)playVibration;
 
 //检测地图app
 //@"comgooglemaps://"
 //@"iosamap://navi"
 //@"baidumap://map/"
-+(NSArray *)checkMapApps;
+//+(NSArray *)checkMapApps;
 
 + (SLComposeViewController *)composeViewControllerWithServiceType:(NSString *)serviceType initialText:(NSString *)initialText image:(UIImage *)image urlString:(NSString *)urlString;
 

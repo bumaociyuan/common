@@ -7,6 +7,7 @@
 //
 
 #import "CommonUtilities.h"
+#import <AudioToolbox/AudioToolbox.h>
 #import <StoreKit/StoreKit.h>
 @implementation CommonUtilities
 
@@ -90,32 +91,44 @@
     return htmlString;
 }
 
++ (NSString *)stringByStrippingHTMLString:(NSString *)htmlString {
+    NSRange r;
+    NSString *s = [htmlString copy];
+    while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
+        s = [s stringByReplacingCharactersInRange:r withString:@""];
+    return s;
+}
+
 + (BOOL)versionString1:(NSString *)versionString1 isGreaterThanVersionString2:(NSString *)versionString2 {
     BOOL result = NO;
     result = [versionString2 compare:versionString1 options:NSNumericSearch]  == NSOrderedAscending;
     return result;
 }
 
-+(NSArray *)checkMapApps {
-    NSArray *mapSchemeArr = @[@"comgooglemaps://",@"iosamap://navi",@"baidumap://map/"];
-    
-    NSMutableArray *appListArr = [[NSMutableArray alloc] initWithObjects:ZXLocalized(@"iOSMap"), nil];
-    
-    for (int i = 0; i < [mapSchemeArr count]; i++) {
-        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[mapSchemeArr objectAtIndex:i]]]]) {
-            if (i == 0) {
-                [appListArr addObject:ZXLocalized(@"googleMap")];
-            }else if (i == 1){
-                [appListArr addObject:ZXLocalized(@"autoNaviMap")];
-            }else if (i == 2){
-                //不检测 百度
-            }
-        }
-    }
-    
-    
-    return appListArr;
++ (void)playVibration {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
+
+//+(NSArray *)checkMapApps {
+//    NSArray *mapSchemeArr = @[@"comgooglemaps://",@"iosamap://navi",@"baidumap://map/"];
+//    
+////    NSMutableArray *appListArr = [[NSMutableArray alloc] initWithObjects:ZXLocalized(@"iOSMap"), nil];
+////    
+////    for (int i = 0; i < [mapSchemeArr count]; i++) {
+////        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[mapSchemeArr objectAtIndex:i]]]]) {
+////            if (i == 0) {
+////                [appListArr addObject:ZXLocalized(@"googleMap")];
+////            }else if (i == 1){
+////                [appListArr addObject:ZXLocalized(@"autoNaviMap")];
+////            }else if (i == 2){
+////                //不检测 百度
+////            }
+////        }
+////    }
+//    
+//    
+//    return appListArr;
+//}
 
 + (SLComposeViewController *)composeViewControllerWithServiceType:(NSString *)serviceType initialText:(NSString *)initialText image:(UIImage *)image urlString:(NSString *)urlString {
     SLComposeViewController *result = nil;

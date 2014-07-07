@@ -53,7 +53,9 @@
 
 #define ORANGE_COLOR [UIColor orangeColor]
 
-#define Light_GRAY_COLOR [UIColor lightGrayColor]
+#define LIGHT_GRAY_COLOR [UIColor lightGrayColor]
+
+#define GRAY_COLOR [UIColor grayColor]
 
 #define NINE_COLOR HEX_COLOR(0x999999)
 
@@ -102,6 +104,8 @@
 #define CurrentSystemVersion ([[UIDevice currentDevice] systemVersion])
 #define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
 
+
+#define IS_RETINA ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
 
 #define IOS_7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 

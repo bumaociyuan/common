@@ -9,7 +9,7 @@
 #import "UIViewController+AwakeFromStoryBoard.h"
 @implementation UIViewController (AwakeFromStoryBoard)
 + (instancetype)instanceFromStoryBoard {
-    id vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([self class])];
+    id vc = [[UIStoryboard storyboardWithName:@"UI" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([self class])];
     return vc;
 }
 
