@@ -391,6 +391,7 @@ UIEdgeInsets scrollViewOriginalContentInsets;
     if(_state == newState)
         return;
     
+    
     SVInfiniteScrollingState previousState = _state;
     _state = newState;
     

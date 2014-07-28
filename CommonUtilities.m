@@ -9,6 +9,7 @@
 #import "CommonUtilities.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <StoreKit/StoreKit.h>
+#import "Reachability.h"
 @implementation CommonUtilities
 
 + (UIViewController *)topViewController {
@@ -196,16 +197,18 @@
     return result;
 }
 
-@end
-
-@implementation  NSUserDefaults (CommonUtilities)
-
-- (void)zx_setObject:(id)obj forKey:(NSString *)key {
-    [self setObject:obj forKey:key];
-    [self synchronize];
++ (BOOL)networkEnabled {
+    return [self isEnable3G]&&[self isEnableWIFI];
+}
+// 是否wifi
++ (BOOL)isEnableWIFI {
+    return ([[Reachability reachabilityForLocalWiFi] currentReachabilityStatus] != NotReachable);
 }
 
-
+// 是否3G
++ (BOOL)isEnable3G {
+    return ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable);
+}
 @end
 
 

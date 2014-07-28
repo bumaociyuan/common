@@ -7,21 +7,21 @@
 //
 
 #import "UISearchBar+textField.h"
+#import "UIView+DescentViews.h"
 
 @implementation UISearchBar (textField)
 - (UITextField *)textField {
-    UITextField *result = nil;
-    for (UIView *subView in self.subviews)
-    {
-        for (UIView *secondLevelSubview in subView.subviews){
-            if ([secondLevelSubview isKindOfClass:[UITextField class]])
-            {
-                UITextField *searchBarTextField = (UITextField *)secondLevelSubview;
-                result = searchBarTextField;
-                break;
-            }
+    NSLog(@"%@",[self descentViews]);
+    for (UIView *view in [self descentViews]) {
+        if ([view isKindOfClass:[UITextField class]]) {
+            return (UITextField *)view;
         }
     }
-    return result;
+    return nil;
+}
+
+- (NSArray *)subcontrols
+{
+    return self.subviews.count == 1 ? [self.subviews.firstObject subviews] : self.subviews;
 }
 @end

@@ -24,7 +24,9 @@
 + (NSDate *)dateWithCLRTicks:(long long)ticks
 {
 //    long long sss = [_birthDay longLongValue];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:(ticks/1000)+8*3600];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:(ticks/1000)];
+//    NSDate *date = [NSDate dateWithTimeIntervalSince1970:(ticks/1000)+8*3600];
+
     return date;
 
 }

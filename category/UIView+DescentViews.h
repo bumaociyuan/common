@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (DescentViews)
-- (NSArray *)getDescentViews;
+- (NSArray *)descentViews;
 @end

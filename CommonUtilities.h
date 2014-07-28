@@ -31,10 +31,12 @@
 //应用内打开 app store 页面
 - (void)openAppWithId:(NSString *)appId;
 + (NSDate *)ymdDateFromDate:(NSDate *)date;
+
++ (BOOL)networkEnabled;
+
+
 @end
-@interface NSUserDefaults (CommonUtilities)
-- (void)zx_setObject:(id)obj forKey:(NSString *)key;
-@end
+
 //void Swizzle(Class c, SEL orig, SEL new)
 //{
 //    Method origMethod = class_getInstanceMethod(c, orig);

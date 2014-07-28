@@ -9,11 +9,11 @@
 #import "UIView+DescentViews.h"
 
 @implementation UIView (DescentViews)
-- (NSArray *)getDescentViews
+- (NSArray *)descentViews
 {
     NSMutableArray *subviews = [[self subviews] mutableCopy];
     for (UIView *subview in [self subviews])
-        [subviews addObjectsFromArray:[subview getDescentViews]]; //recursive
+        [subviews addObjectsFromArray:[subview descentViews]]; //recursive
     return subviews;
 }
 @end

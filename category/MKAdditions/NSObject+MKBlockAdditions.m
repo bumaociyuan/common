@@ -28,7 +28,7 @@ static VoidBlock _block;
     [self performSelector:@selector(callBlock) withObject:nil afterDelay:delay];
 }
 
--(void) callBlock
+- (void) callBlock
 {
     _block();
     
