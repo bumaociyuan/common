@@ -12,9 +12,11 @@
 @implementation UISearchBar (textField)
 - (UITextField *)textField {
     NSLog(@"%@",[self descentViews]);
-    for (UIView *view in [self descentViews]) {
-        if ([view isKindOfClass:[UITextField class]]) {
-            return (UITextField *)view;
+    for (UIView *view in [self subviews]) {
+        for (UIView *aview in [view subviews]) {
+        if ([aview isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
+            return (UITextField *)aview;
+        }
         }
     }
     return nil;
