@@ -13,10 +13,10 @@
 - (UITextField *)textField {
     NSLog(@"%@",[self descentViews]);
     for (UIView *view in [self subviews]) {
-        for (UIView *aview in [view subviews]) {
-        if ([aview isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
-            return (UITextField *)aview;
-        }
+        for (UIView *aView in [view subviews]) {
+            if ([aView isKindOfClass:NSClassFromString(@"UISearchBarTextField")]) {
+                return (UITextField *)aView;
+            }
         }
     }
     return nil;
