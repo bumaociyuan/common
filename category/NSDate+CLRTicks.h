@@ -11,4 +11,6 @@
 @interface NSDate (CLRTicks)
 + (NSDate *)dateWithCLRTicks:(long long)ticks;
 + (long long)ticksWithDate:(NSDate *)date;
+
+- (long long)ticksTime;
 @end

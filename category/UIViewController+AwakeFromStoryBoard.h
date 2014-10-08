@@ -10,4 +10,5 @@
 
 @interface UIViewController (AwakeFromStoryBoard)
 + (instancetype)instanceFromStoryBoard;
++ (instancetype)instanceFromStoryBoard:(NSString *)storyBoardName identifier:(NSString *)identifier;
 @end

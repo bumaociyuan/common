@@ -10,9 +10,9 @@
 
 @implementation UITableView (EliminateExtraSeparators)
 - (void)eliminateExtraSeparators {
-    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
-    v.backgroundColor = [UIColor clearColor];
-    [self setTableFooterView:v];
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    self.tableFooterView = view;
 }
 
 @end

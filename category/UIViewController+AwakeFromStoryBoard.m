@@ -9,9 +9,11 @@
 #import "UIViewController+AwakeFromStoryBoard.h"
 @implementation UIViewController (AwakeFromStoryBoard)
 + (instancetype)instanceFromStoryBoard {
-    id vc = [[UIStoryboard storyboardWithName:@"UI" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass([self class])];
+    return [self instanceFromStoryBoard:@"UI" identifier:NSStringFromClass([self class])];
+}
++ (instancetype)instanceFromStoryBoard:(NSString *)storyBoardName identifier:(NSString *)identifier {
+    id vc = [[UIStoryboard storyboardWithName:storyBoardName bundle:nil] instantiateViewControllerWithIdentifier:identifier];
     return vc;
 }
-
 
 @end

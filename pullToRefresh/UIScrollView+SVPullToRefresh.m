@@ -218,7 +218,7 @@ static char UIScrollViewPullToRefreshView;
             [otherView removeFromSuperview];
     }
     
-    id customView = [self.viewForState objectAtIndex:self.state];
+    UIView *customView = [self.viewForState objectAtIndex:self.state];
     BOOL hasCustomView = [customView isKindOfClass:[UIView class]];
     
     self.titleLabel.hidden = hasCustomView;

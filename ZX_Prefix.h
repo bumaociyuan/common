@@ -23,3 +23,7 @@
 #import "UIScrollView+scrollToBottom.h"
 #import "UIView+xib.h"
 #import "NSObject+isNotNilOrNull.h"
+#import "NSString+replace.h"
+#import "NSString+BlockHelper.h"
+#import "UIImage+fixOrientation.h"
+#import "UIWebView+loadURL.h"

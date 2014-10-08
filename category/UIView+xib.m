@@ -12,7 +12,6 @@
 
 + (instancetype)instanceFromXib {
     NSArray *nib = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil];
-    
     UIView *result = [nib objectAtIndex:0];
     return result;
 }

@@ -18,7 +18,6 @@
     return newImage;
 }
 
-
 - (UIImage *)resizeToScale:(CGFloat)newScale {
     CGSize originSize = self.size;
     CGSize newSize;
@@ -27,6 +26,15 @@
     return [self resizeToSize:newSize];
 }
 
+- (UIImage *)resizeToWidth:(CGFloat)newWidth {
+    float scale = newWidth/self.size.width;
+    return [self resizeToScale:scale];
+}
+
+- (UIImage *)resizeToHeight:(CGFloat)newHeight {
+    float scale = newHeight/self.size.height;
+    return [self resizeToScale:scale];
+}
 
 - (UIImage *)imageBlackAndWhite
 {

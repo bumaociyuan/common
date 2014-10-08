@@ -174,7 +174,7 @@ UIEdgeInsets scrollViewOriginalContentInsets;
             [otherView removeFromSuperview];
     }
     
-    id customView = [self.viewForState objectAtIndex:self.state];
+    UIView *customView = [self.viewForState objectAtIndex:self.state];
     BOOL hasCustomView = [customView isKindOfClass:[UIView class]];
     
     
@@ -405,7 +405,7 @@ UIEdgeInsets scrollViewOriginalContentInsets;
             [otherView removeFromSuperview];
     }
     
-    id customView = [self.viewForState objectAtIndex:newState];
+    UIView *customView = [self.viewForState objectAtIndex:newState];
     BOOL hasCustomView = [customView isKindOfClass:[UIView class]];
     
     if(hasCustomView) {

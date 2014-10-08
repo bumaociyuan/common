@@ -37,4 +37,8 @@
     result = result * 1000;
     return result;
 }
+
+- (long long)ticksTime {
+    return [NSDate ticksWithDate:self];
+}
 @end
