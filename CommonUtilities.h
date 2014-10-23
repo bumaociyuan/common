@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Social/Social.h>
+@class MKMapView;
 @interface CommonUtilities : NSObject
 + (UIViewController *)topViewController;
 + (NSArray *)imageUrlsInHtmlString:(NSString *)htmlString;
@@ -33,6 +34,9 @@
 + (NSDate *)ymdDateFromDate:(NSDate *)date;
 
 + (BOOL)networkEnabled;
+
++ (void)zoomToFitMapAnnotations:(MKMapView *)mapView;
+
 
 
 @end

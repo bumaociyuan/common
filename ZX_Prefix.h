@@ -27,3 +27,8 @@
 #import "NSString+BlockHelper.h"
 #import "UIImage+fixOrientation.h"
 #import "UIWebView+loadURL.h"
+#import "NSObject+isEqual.h"
+#import "CGRect+helper.h"
+
+
+

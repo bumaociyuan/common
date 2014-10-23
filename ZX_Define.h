@@ -7,7 +7,7 @@
 //
 
 //applicationFrame
-#define APP_DELEGATE (AppDelegate *)[[UIApplication sharedApplication]delegate]
+#define APP_DELEGATE ((AppDelegate *)[[UIApplication sharedApplication]delegate])
 
 #define WINDOW_HEIGHT ([[(AppDelegate *)[[UIApplication sharedApplication]delegate] window] height] + (IOS_7?0:-20))
 
@@ -17,12 +17,11 @@
  *  common functions
  */
 
-
-
-
-#define NSLog(FORMAT, ...) fprintf(stderr, "%s:%d----->  \t%s\n", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ## __VA_ARGS__] UTF8String]);
-
-
+#if DEBUG
+#define NSLog(__FORMAT__, ...) NSLog((@"%s ----->%d\n " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#define NSLog(__FORMAT__, ...)
+#endif
 
 
 //#define IMAGE_WITH_NAME(name) [UIImage imageWithContentsOfFile :[[NSBundle mainBundle] pathForAuxiliaryExecutable:name]]
@@ -72,6 +71,7 @@
 
 #define SIMULATOR (NSNotFound != [[[UIDevice currentDevice] model] rangeOfString:@"Simulator"].location)
 
+
 /**
  *  degrees/radian functions
  */
@@ -94,6 +94,7 @@
 
 #define UserDefaults [NSUserDefaults standardUserDefaults]
 #define NotificationCenter [NSNotificationCenter defaultCenter]
+#define UUID_String [[UIDevice currentDevice] identifierForVendor].UUIDString
 
 // System Information
 
