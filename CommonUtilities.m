@@ -244,6 +244,18 @@
     region = [mapView regionThatFits:region];
     [mapView setRegion:region];
 }
+
++ (void)pasteString:(NSString *)string {
+    [UIPasteboard generalPasteboard].string = string;
+}
+
++ (void)pasteImage:(UIImage *)image {
+    [UIPasteboard generalPasteboard].image = image;
+}
+
++ (void)saveImageToAlbum:(UIImage *)image {
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+}
 @end
 
 

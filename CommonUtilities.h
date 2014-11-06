@@ -37,7 +37,17 @@
 
 + (void)zoomToFitMapAnnotations:(MKMapView *)mapView;
 
++ (void)pasteString:(NSString *)string;
 
++ (void)pasteImage:(UIImage *)image;
+
+
+/*!
+ *  no call back TODO:add call back
+ *
+ *  @param image image to save
+ */
++ (void)saveImageToAlbum:(UIImage *)image;
 
 @end
 
