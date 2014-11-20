@@ -12,6 +12,9 @@
 - (void)eliminateExtraSeparators {
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor clearColor];
+    if (self.tableFooterView) {
+        
+    }
     self.tableFooterView = view;
 }
 

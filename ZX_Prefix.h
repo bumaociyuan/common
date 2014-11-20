@@ -29,6 +29,7 @@
 #import "UIWebView+loadURL.h"
 #import "NSObject+isEqual.h"
 #import "CGRect+helper.h"
+#import "UIViewController+addChildViewControllerWithFrame.h"
 
 
 

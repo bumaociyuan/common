@@ -38,17 +38,16 @@
 
 - (UIImage *)imageBlackAndWhite
 {
-    CIImage *beginImage = [CIImage imageWithCGImage:self.CGImage];
+    UIImage *i = self;
+    // Create a graphic context.
+    UIGraphicsBeginImageContextWithOptions(i.size, YES, 1.0);
+    CGRect imageRect = CGRectMake(0, 0, i.size.width, i.size.height);
+    // Draw the image with the luminosity blend mode.
+    [i drawInRect:imageRect blendMode:kCGBlendModeLuminosity alpha:1.0];
+    // Get the resulting image.
+    UIImage *filteredImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
-    CIImage *blackAndWhite = [CIFilter filterWithName:@"CIColorControls" keysAndValues:kCIInputImageKey, beginImage, @"inputBrightness", [NSNumber numberWithFloat:0.0], @"inputContrast", [NSNumber numberWithFloat:1.1], @"inputSaturation", [NSNumber numberWithFloat:0.0], nil].outputImage;
-    CIImage *output = [CIFilter filterWithName:@"CIExposureAdjust" keysAndValues:kCIInputImageKey, blackAndWhite, @"inputEV", [NSNumber numberWithFloat:0.7], nil].outputImage;
-    
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CGImageRef cgiimage = [context createCGImage:output fromRect:output.extent];
-    UIImage *newImage = [UIImage imageWithCGImage:cgiimage];
-    
-    CGImageRelease(cgiimage);
-    
-    return newImage;
+    return filteredImage;
 }
 @end

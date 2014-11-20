@@ -41,8 +41,10 @@
                 *stop = YES;
             }
         }];
-    }else {
+    }else if ([self isKindOfClass:[NSNull class]]) {
         
+        result = [object isKindOfClass:[NSNull class]];
+    }else {
         NSAssert(1, @"未实现此类的比较方法");
     }
     
