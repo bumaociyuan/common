@@ -10,4 +10,5 @@
 
 @interface NSObject (isNotNilOrNull)
 - (BOOL)isNotNilOrNull;
+- (BOOL)isNotNilOrNullOrEmpty;
 @end

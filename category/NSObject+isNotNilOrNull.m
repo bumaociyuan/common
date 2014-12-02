@@ -12,4 +12,8 @@
 - (BOOL)isNotNilOrNull {
     return self && ![self isKindOfClass:[NSNull class]];
 }
+
+- (BOOL)isNotNilOrNullOrEmpty {
+    return [self isNotNilOrNull] && [(NSString *)self length];
+}
 @end
