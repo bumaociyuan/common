@@ -14,6 +14,12 @@
 }
 
 - (BOOL)isNotNilOrNullOrEmpty {
-    return [self isNotNilOrNull] && [(NSString *)self length];
+    BOOL notEmpty = YES;
+    if ([self respondsToSelector:@selector(length)]) {
+        notEmpty = [(NSString *)self length];
+    }else if ([self respondsToSelector:@selector(count)]) {
+        notEmpty = [(NSArray *)self count];
+    }
+    return [self isNotNilOrNull] && notEmpty;
 }
 @end

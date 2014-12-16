@@ -67,7 +67,9 @@
  */
 #define IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
-#define IPHONE5 (([[UIScreen mainScreen] bounds].size.height - 568) ? NO : YES)
+#define IPHONE5 !([[UIScreen mainScreen] bounds].size.height - 568)
+
+#define IPHONE4 !([[UIScreen mainScreen] bounds].size.height - 480)
 
 #define SIMULATOR (NSNotFound != [[[UIDevice currentDevice] model] rangeOfString:@"Simulator"].location)
 
