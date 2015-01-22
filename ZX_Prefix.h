@@ -1,6 +1,6 @@
 //
 //  ZX_Prefix.h
-//  
+//
 //
 //  Created by zx on 12/30/13.
 //  Copyright (c) 2013 zx. All rights reserved.
@@ -28,6 +28,7 @@
 #import "NSObject+isEqual.h"
 #import "CGRect+helper.h"
 #import "UIViewController+addChildViewControllerWithFrame.h"
-
+#import "NSString+DateFormatter.h"
+#import "NSDate+DateFormatter.h"
 
 

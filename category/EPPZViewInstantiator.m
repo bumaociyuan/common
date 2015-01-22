@@ -17,9 +17,9 @@
 
 @implementation EPPZViewInstantiator
 
-+(id)viewFromNibNamed:(NSString*) nibName
-{
++ (id)viewFromNibNamed:(NSString *)nibName {
     EPPZViewInstantiator *instantiator = [self new];
+    
     [[NSBundle mainBundle] loadNibNamed:nibName owner:instantiator options:nil];
     return instantiator.view;
 }
@@ -29,10 +29,12 @@
 
 @implementation UIView (Instantiate)
 
-+(id)loadFromNib
-{ return [self loadFromNibNamed:NSStringFromClass(self)]; }
++ (id)loadFromNib {
+    return [self loadFromNibNamed:NSStringFromClass(self)];
+}
 
-+(id)loadFromNibNamed:(NSString*) nibName
-{ return [EPPZViewInstantiator viewFromNibNamed:nibName]; }
++ (id)loadFromNibNamed:(NSString *)nibName {
+    return [EPPZViewInstantiator viewFromNibNamed:nibName];
+}
 
 @end

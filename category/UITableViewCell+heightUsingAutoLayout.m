@@ -15,6 +15,5 @@
     [self layoutIfNeeded];
     height = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     return height;
-    
 }
 @end

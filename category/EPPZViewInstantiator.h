@@ -18,11 +18,11 @@
 
 @interface EPPZViewInstantiator : NSObject
 @property (nonatomic, strong) IBOutlet UIView *view;
-+(id)viewFromNibNamed:(NSString*) nibName;
++ (id)viewFromNibNamed:(NSString *)nibName;
 @end
 
 
 @interface UIView (Instantiate)
-+(id)loadFromNib;
-+(id)loadFromNibNamed:(NSString*) nibName;
++ (id)loadFromNib;
++ (id)loadFromNibNamed:(NSString *)nibName;
 @end

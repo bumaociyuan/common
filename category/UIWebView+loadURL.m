@@ -10,8 +10,8 @@
 
 @implementation UIWebView (loadURL)
 
-- (void)loadURL:(NSString *)url {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+- (void)loadURL:(NSString *)URL {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URL]];
     [self loadRequest:request];
 }
 

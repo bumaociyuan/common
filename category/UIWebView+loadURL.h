@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIWebView (loadURL)
-- (void)loadURL:(NSString *)url;
+- (void)loadURL:(NSString *)URL;
 @end
