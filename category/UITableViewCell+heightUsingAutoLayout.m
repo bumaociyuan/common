@@ -1,6 +1,6 @@
 //
 //  UITableViewCell+heightUsingAutoLayout.m
-//  
+//
 //
 //  Created by zx on 2/19/14.
 //  Copyright (c) 2014 zx. All rights reserved.
@@ -16,4 +16,5 @@
     height = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     return height;
 }
+
 @end

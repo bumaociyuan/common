@@ -30,5 +30,5 @@
 #import "UIViewController+addChildViewControllerWithFrame.h"
 #import "NSString+DateFormatter.h"
 #import "NSDate+DateFormatter.h"
-
+#import "NSDictionary+hasKey.h"
 
