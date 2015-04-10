@@ -11,8 +11,12 @@
 @implementation UIView (xib)
 
 + (instancetype)instanceFromXib {
-    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:NSStringFromClass(self) owner:nil options:nil];
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *name = NSStringFromClass(self);
+    
+    NSArray *nib = [bundle loadNibNamed:name owner:nil options:nil];
     UIView *result = [nib objectAtIndex:0];
+    
     return result;
 }
 

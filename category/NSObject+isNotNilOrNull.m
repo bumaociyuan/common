@@ -10,7 +10,7 @@
 
 @implementation NSObject (isNotNilOrNull)
 - (BOOL)isNotNilOrNull {
-    return self && ![self isKindOfClass:[NSNull class]];
+    return ![self isKindOfClass:[NSNull class]];
 }
 
 - (BOOL)isNotNilOrNullOrEmpty {

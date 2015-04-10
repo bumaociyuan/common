@@ -102,6 +102,7 @@
 
 #define App_Version [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
 #define App_Version_short [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define App_Name [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]
 
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 #define CurrentSystemVersion ([[UIDevice currentDevice] systemVersion])

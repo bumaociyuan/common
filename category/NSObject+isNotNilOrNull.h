@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (isNotNilOrNull)
+
 - (BOOL)isNotNilOrNull;
 - (BOOL)isNotNilOrNullOrEmpty;
 @end

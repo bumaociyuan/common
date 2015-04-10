@@ -16,14 +16,3 @@
 #import "ZX_Define.h"
 #import <objc/runtime.h>
 
-
-@interface UIScrollView (zx)
-@property (nonatomic, strong) NSObject *isLoading;
-@end
-
-@implementation UIScrollView (zx)
-
-ZX_CATEGORY_PROPERTY(isLoading, setIsLoading, NSObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC, {
-})
-
-@end

@@ -18,6 +18,7 @@
 
 @interface EPPZViewInstantiator : NSObject
 @property (nonatomic, strong) IBOutlet UIView *view;
+
 + (id)viewFromNibNamed:(NSString *)nibName;
 @end
 

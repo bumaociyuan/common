@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (fixOrientation)
+
 - (UIImage *)fixOrientation:(UIImage *)srcImg;
++ (UIImage *)fixOrientation:(UIImage *)srcImg;
+
 @end

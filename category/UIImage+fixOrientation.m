@@ -9,6 +9,7 @@
 #import "UIImage+fixOrientation.h"
 
 @implementation UIImage (fixOrientation)
+
 - (UIImage *)fixOrientation:(UIImage *)srcImg {
     if (srcImg.imageOrientation == UIImageOrientationUp) return srcImg;
     CGAffineTransform transform = CGAffineTransformIdentity;
@@ -78,4 +79,9 @@
     CGImageRelease(cgimg);
     return img;
 }
+
++ (UIImage *)fixOrientation:(UIImage *)srcImg {
+    return [[UIImage new] fixOrientation:srcImg];
+}
+
 @end
