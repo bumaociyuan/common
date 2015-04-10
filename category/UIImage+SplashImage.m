@@ -18,7 +18,8 @@
         viewSize = CGSizeMake(viewSize.height, viewSize.width);
         viewOrientation = @"Landscape";
     }
-    
+    [self appIcomImage];
+ 
     NSArray *imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     
     for (NSDictionary *dict in imagesDict) {
@@ -26,7 +27,6 @@
         
         if (CGSizeEqualToSize(imageSize, viewSize) && [viewOrientation isEqualToString:dict[@"UILaunchImageOrientation"]]) return dict[@"UILaunchImageName"];
     }
-    
     return nil;
 }
 
@@ -35,6 +35,24 @@
     UIImage *image = [UIImage imageNamed:imageName];
     
     return image;
+}
+
++ (NSString *)appIcomImageName {
+    
+    NSDictionary *CFBundleIcons = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleIcons"];
+    
+    NSDictionary *CFBundleIconFiles = CFBundleIcons[@"CFBundlePrimaryIcon"];
+    
+    NSArray *icons = CFBundleIconFiles[@"CFBundleIconFiles"];
+    
+    
+    return [icons lastObject];
+}
+
++ (UIImage *)appIcomImage {
+    NSString *iconName = [self appIcomImageName];
+    UIImage *result = [UIImage imageNamed:iconName];
+    return result;
 }
 
 @end

@@ -24,4 +24,6 @@
  **/
 + (UIImage*)splashImageForOrientation:(UIDeviceOrientation)orientation;
 
++ (UIImage *)appIcomImage;
+
 @end
