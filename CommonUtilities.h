@@ -24,6 +24,8 @@
 
 + (void)playVibration;
 
++ (void)playSystemSound;
+
 //检测地图app
 //@"comgooglemaps://"
 //@"iosamap://navi"

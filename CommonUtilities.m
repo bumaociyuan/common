@@ -111,6 +111,17 @@
 + (void)playVibration {
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
+#define systemSoundID    1003
++ (void)playSystemSound {
+    //http://iphonedevwiki.net/index.php/AudioServices
+    //    AudioServicesPlaySystemSound (systemSoundID);
+    
+    //https://github.com/TUNER88/iOSSystemSoundsLibrary
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge_retained CFURLRef)@"file:///System/Library/Audio/UISounds/Modern/calendar_alert_chord.caf",&soundID);
+    AudioServicesPlaySystemSound(soundID);
+    
+}
 
 //+(NSArray *)checkMapApps {
 //    NSArray *mapSchemeArr = @[@"comgooglemaps://",@"iosamap://navi",@"baidumap://map/"];
