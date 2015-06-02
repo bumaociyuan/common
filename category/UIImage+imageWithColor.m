@@ -9,18 +9,20 @@
 #import "UIImage+imageWithColor.h"
 
 @implementation UIImage (imageWithColor)
-+ (UIImage *)imageWithColor:(UIColor *)color
-{
-    CGRect rect = CGRectMake(0.0f, 0.0f, 100.0f, 100.0f);
++ (UIImage *)imageWithColor:(UIColor *)color {
+    return [self imageWithColor:color size:CGSizeMake(1, 1)];
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
     CGContextSetFillColorWithColor(context, [color CGColor]);
     CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
-    return image;
+    return img;
 }
+
 @end

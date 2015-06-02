@@ -111,6 +111,7 @@
 + (void)playVibration {
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
+
 #define systemSoundID    1003
 + (void)playSystemSound {
     //http://iphonedevwiki.net/index.php/AudioServices
@@ -118,14 +119,61 @@
     
     //https://github.com/TUNER88/iOSSystemSoundsLibrary
     SystemSoundID soundID;
-    AudioServicesCreateSystemSoundID((__bridge_retained CFURLRef)@"file:///System/Library/Audio/UISounds/Modern/calendar_alert_chord.caf",&soundID);
+    NSURL *fileURL = [NSURL URLWithString:@"/System/Library/Audio/UISounds/Modern/calendar_alert_chord.caf"];
+    AudioServicesCreateSystemSoundID((__bridge_retained CFURLRef)fileURL, &soundID);
     AudioServicesPlaySystemSound(soundID);
+}
+
++ (NSDictionary *)distanceBetweenCoordinate1:(CLLocationCoordinate2D)coordinate1 coordinate2:(CLLocationCoordinate2D)coordinate2 {
+    double longitude1 = coordinate1.longitude;
+    double latitude1 = coordinate1.latitude;
+    double distance = 0.00;
+    double DEF_PI = M_PI; // PI
+    double DEF_2PI = M_PI * 2; // 2*PI
+    double DEF_PI180 = M_PI / 180; // PI/180.0
+    double DEF_R = 6370693.5; // radius of earth
+    
+    double ew1, ns1, ew2, ns2;
+    double dx, dy, dew;
+    
+    // 角度转换为弧度
+    ew1 = longitude1 * DEF_PI180;
+    ns1 = latitude1 * DEF_PI180;
+    ew2 = coordinate2.longitude * DEF_PI180;
+    ns2 = coordinate2.latitude * DEF_PI180;
+    
+    // 经度差
+    dew = ew1 - ew2;
+    
+    // 若跨东经和西经180 度，进行调整
+    if (dew > DEF_PI)
+        dew = DEF_2PI - dew;
+    else if (dew < -DEF_PI)
+        dew = DEF_2PI + dew;
+    
+    dx = DEF_R * cos(ns1) * dew; // 东西方向长度(在纬度圈上的投影长度)
+    dy = DEF_R * (ns1 - ns2); // 南北方向长度(在经度圈上的投影长度)
+    
+    // 勾股定理求斜边长
+    distance = sqrt(dx * dx + dy * dy);
+    
+    CGFloat result = 0;
+    NSString *unit = nil;
+    if (distance > 1000) {
+        unit = @"公里";
+        result = distance / 1000;
+    } else {
+        unit = @"米";
+        result = distance;
+    }
+    return @{@"distanceString":[NSString stringWithFormat:@"%.2f%@",result,unit],
+             @"distance":@(distance)};
     
 }
 
 //+(NSArray *)checkMapApps {
 //    NSArray *mapSchemeArr = @[@"comgooglemaps://",@"iosamap://navi",@"baidumap://map/"];
-//    
+//
 ////    NSMutableArray *appListArr = [[NSMutableArray alloc] initWithObjects:ZXLocalized(@"iOSMap"), nil];
 ////    
 ////    for (int i = 0; i < [mapSchemeArr count]; i++) {

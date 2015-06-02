@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Social/Social.h>
+#import <MapKit/MapKit.h>
 
 @class MKMapView;
 
@@ -25,6 +26,8 @@
 + (void)playVibration;
 
 + (void)playSystemSound;
+
++ (NSDictionary *)distanceBetweenCoordinate1:(CLLocationCoordinate2D)coordinate1 coordinate2:(CLLocationCoordinate2D)coordinate2;
 
 //检测地图app
 //@"comgooglemaps://"

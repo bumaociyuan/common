@@ -9,8 +9,11 @@
 #import "UITableViewCell+heightUsingAutoLayout.h"
 
 @implementation UITableViewCell (heightUsingAutoLayout)
+
 - (float)heightUsingAutoLayout {
     float height = 0;
+    [self setNeedsUpdateConstraints];
+    [self updateConstraintsIfNeeded];
     [self setNeedsLayout];
     [self layoutIfNeeded];
     height = [self.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
