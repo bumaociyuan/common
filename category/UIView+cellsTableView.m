@@ -9,11 +9,15 @@
 #import "UIView+cellsTableView.h"
 
 @implementation UIView (cellsTableView)
-- (UITableView *)zx_cellTableView {
-    if ([self.superview isKindOfClass:[UITableView class]]) {
-        return (UITableView *)self.superview;
-    }else {
-        return self.superview.zx_cellTableView;
+
+- (UITableView *)zx_cellTableView
+{
+    UITableView *view = (UITableView *)[self superview];
+    while (![view isKindOfClass:[UITableView class]])
+    {
+        view = (UITableView *)[view superview];
     }
+    return view;
 }
+
 @end
