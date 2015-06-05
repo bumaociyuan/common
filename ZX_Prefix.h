@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 zx. All rights reserved.
 //
 
-
 #import "ZX_Define.h"
 #import <objc/runtime.h>
 #import "FrameAccessor.h"
@@ -31,4 +30,5 @@
 #import "NSString+DateFormatter.h"
 #import "NSDate+DateFormatter.h"
 #import "NSDictionary+hasKey.h"
-
+#import "UITableViewCell+fullFillSeparatorLine.h"
+#import "UISegmentedControl+helper.h"
