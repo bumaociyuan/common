@@ -70,7 +70,7 @@
 	};
 
 	// 获取按钮绑定的所有TouchUpInside事件的方法名
-	MJBtnTouchUpEvent = function actionWithTargets(button) {
+	MJBtnTouchUpEvent = function (button) {
 	var allTargets = [button allTargets].allObjects();
 	if (!allTargets) {
 		return "is not a uicontrol"
