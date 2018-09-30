@@ -70,19 +70,18 @@
 	};
 
 	// 获取按钮绑定的所有TouchUpInside事件的方法名
-	MJBtnTouchUpEvent = function (button) {
-	var allTargets = [button allTargets].allObjects();
-	if (!allTargets) {
-		return "is not a uicontrol"
-	}
-	var allShow = [];
-	for (var i = 0; i < allTargets.length; i++) {
-		var target = allTargets[i];
-		var actions = [button actionsForTarget: target forControlEvent: UIControlEventTouchUpInside];
-		allShow.push("actions:" + actions + " target:" + target);
-	}
-	return allShow;
-}
+	MJBtnTouchUpEvent = function(btn) { 
+		var events = [];
+		var allTargets = btn.allTargets().allObjects()
+		var count = allTargets.count;
+    	for (var i = count - 1; i >= 0; i--) { 
+    		if (btn != allTargets[i]) {
+    			var e = [btn actionsForTarget:allTargets[i] forControlEvent:UIControlEventTouchUpInside];
+    			events.push(e);
+    		}
+    	}
+	   return events;
+	};
 
 	// CG函数
 	MJPointMake = function(x, y) { 
